@@ -1,0 +1,1075 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[fleqn]{amsmath}
+\usepackage{multirow}
+
+\title{Trabajo}
+\author{Octavio Vicente Tobarra }
+\date{January 2016}
+
+\begin{document}
+
+\maketitle
+
+
+
+
+
+
+
+\section{Introduction}
+
+This paper consists of all works I am doing for my PH.D in Music Information Retrieval.
+I will update this paper with new works and experiments, and the results and conclusion
+of theses experiments.
+
+
+\section{New database for bass and melody classification}
+
+A new database of MIDI files has been created for classical, jazz and popular genres: class, jazz and kar. Each database has been divided in two datasets: train and test. 
+
+Train datasets will be used to train classifiers and contains about 66\% of all MIDI
+files from databases. 
+
+Table \ref{table1} shows the number of MIDI files in each dataset.
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | r  | r | r }
+\hline
+ & \multicolumn{3}{|c}{Number of MIDI files}  \\
+\hline
+Dataset & Complete dataset & Train & Test \\
+\hline
+\hline
+class & 984 & 647 & 337 \\
+\hline
+jazz & 1289 & 858 & 431 \\
+\hline
+kar & 1347 & 899 & 448 \\
+\hline
+\end{tabular}
+\caption{Number of MIDI files in each dataset}
+\label{table1}
+\end{center}
+\end{table}
+
+All tracks in MIDI files have been tagged as bass, melody or accompaniment. Percussion tracks are considered as not valid and have not been tagged. A constraint is set that melody and bass lines must be in different tracks. All tracks that have not been 
+tagged as bass or melody have been tagged as accompaniment.
+
+Table \ref{table2} shows the number of bass, melody and accompaniments tracks for each MIDI dataset.
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ l | r   r | r   r | r   r | r }
+\hline
+Datasets & \multicolumn{2}{|c|}{bass tracks} & \multicolumn{2}{|c|}{melody tracks} & \multicolumn{2}{|c|}{accomp tracks } & total tracks \\
+\hline
+\hline
+class & 1036 & -16.87\% & 1669 & -27.18\% & 3436 & -55.95\% & 6141 \\
+jazz & 1327 & -20.01\% & 1792 & -27.02\% & 3513 & -52.97\% & 6632 \\
+kar & 1382 & -12.16\% & 1430 & -12.58\% & 8555 & -75.26\% & 11367 \\
+\hline
+class\_train & 677 & -16.98\% & 1069 & -26.81\% & 2241 & -56.21\% & 3987 \\
+jazz\_train & 886 & -21.23\% & 1135 & -27.19\% & 2153 & -51.58\% & 4174 \\
+kar\_train & 928 & -12.11\% & 955 & -12.46\% & 5781 & -75.43\% & 7664 \\
+\hline
+class\_test & 359 & -16.67\% & 600 & -27.86\% & 1195 & -55.48\% & 2154 \\
+jazz\_test & 441 & -17.94\% & 657 & -26.73\% & 1360 & -55.33\% & 2458 \\
+kar\_test & 454 & -12.26\% & 475 & -12.83\% & 2774 & -74.91\% & 3703 \\
+\hline
+\end{tabular}
+\caption{Tracks tagged for each dataset}
+\label{table2}
+\end{center}
+\end{table}
+
+
+
+
+%==========================================================================================
+%==========================================================================================
+
+
+
+
+
+
+\section{Repetición de los experimentos del artículo del ICPRAM}
+
+Se repiten los experimentos realizados en \cite{vicente2012bass}. En este caso se han utilizado las bases de datos class\_train, jazz\_train y kar\_train en lugar de clas200, jaz200 y kar200.
+
+Definición de FP, FN y TP según \cite{vicente2012bass}:
+
+
+FP is the number of false-positives (the classifier selects a non-bass track), TP is the number of true-positives (the selected track contains the correct bass line), and FN is the number of false-negatives (the classifier does not select any track but the MIDI file indeed contains at least one bass track).
+The selection is considered as successful both if the selected track contains the correct bass line or the MIDI file has not any bass track and the classifier does not select any bass track (a true-negative situation). 
+
+\begin{equation}
+Precision=\frac{TP}{TP + FP}
+\end{equation}
+
+\begin{equation}
+Precision=\frac{TP}{TP + FN}
+\end{equation}
+
+\begin{equation}
+F-measure=\frac{Recall x Precision}{Recall + Precision}
+\end{equation}
+
+
+Definición de errores Tipo 1, Tipo 2 y Tipo 3 \cite{de2011statistical}:
+
+\begin{equation}
+\begin{array}{l l }
+FP = Tipo 1 + Tipo 2 \\
+FN = Tipo 3 \\    
+\end{array}
+\end{equation}
+
+
+
+
+
+\subsection{Dictionary-Based Tagging (Section 5 in [1])}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | r }
+\hline
+ & Number of different tags \\
+\hline
+\hline
+All tags obtained & 3971 \\
+\hline
+Bass tags obtained & 451 \\
+\hline
+\end{tabular}
+\caption{Number of different tags related to bass and non bass content}
+%\label{table3}
+\end{center}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | r }
+\hline
+Bass tag & Number of repetitions \\
+\hline
+\hline
+%veu 3 & 3 \\
+%winjammer demo & 3 \\
+%fretless bs. & 4 \\
+%(guillaume de machaut) & 4 \\
+%ac bass & 4 \\
+%acoustic bs. & 4 \\
+%b bbok & 4 \\
+%bass 1 & 4 \\
+%bass finger & 4 \\
+%bass gtr & 4 \\
+%basse 2 & 4 \\
+%basse ac 2 & 4 \\
+%basse ac2 & 4 \\
+%double bass & 4 \\
+%double basses & 4 \\
+%electric bass & 4 \\
+%fingbass & 4 \\
+%jazz bass & 4 \\
+%left hand & 4 \\
+%bass guitar & 5 \\
+%bass2 & 5 \\
+%bassi & 5 \\
+%fngrbass & 5 \\
+%pickbass & 5 \\
+%staff-1 & 5 \\
+%strings & 5 \\
+%bas & 6 \\
+%bass & 6 \\
+%basse & 6 \\
+%basses & 6 \\
+%basso continuo & 6 \\
+%3b & 6 \\
+%basse2 & 7 \\
+%basso & 7 \\
+%bassus & 7 \\
+%tuba & 7 \\
+%t & 8 \\
+%cello & 9 \\
+%bass & 10 \\
+%synth bass & 10 \\
+%fretless & 11 \\
+%4 & 12 \\
+%fretless bass & 13 \\
+%basse 2 & 15 \\
+%acoustic bass & 16 \\
+%contrabass & 17 \\
+%pianoforte & 17 \\
+basse 2 & 19 \\
+bass & 25 \\
+1b & 25 \\
+2b & 33 \\
+bajo & 34 \\
+bass (bb) & 35 \\
+basse 2 & 41 \\
+bass & 46 \\
+basse & 83 \\
+b & 136 \\
+bass & 405 \\
+bass ( bb ) & 612 \\
+\hline
+\end{tabular}
+\caption{Number of different tags related to bass and non bass content}
+%\label{table4}
+\end{center}
+\end{table}
+
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | r | r | r }
+\hline
+ & kar & class & jazz \\
+\hline
+\hline
+No bass tracks & 24 & 91 & 3 \\
+\hline
+One bass track & 825 & 450 & 829 \\
+\hline
+$>$ one bass track & 50 & 106 & 26 \\
+\hline
+\end{tabular}
+\caption{MIDI files classified by the number of bass tracks}
+%\label{table5}
+\end{center}
+\end{table}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | r | r | r }
+\hline
+Dataset & Bass tracks & Non bass tracks & Total \\
+\hline
+\hline
+class & 678 (17.00\%) & 3309 (83.00\%) & 3987 \\
+jazz & 886 (21.23\%) & 3288 (78.77\%) & 4174 \\
+kar & 928 (12.11\%) & 6736 (87.89\%) & 7664 \\
+\hline
+\end{tabular}
+\caption{Number of bass and non-bass tracks in the MIDI datasets. Proportions of both kind  of tracks per genre are also shown}
+%\label{table6}
+\end{center}
+\end{table}
+
+
+
+
+\subsection{Bass versus Non-bass Classification (Section 6.1)}
+
+Clasificación de las pistas como “bajo” o “no bajo” utilizando el algoritmo RF con cross-validation (K=10 F=6). Se utilizan las bases de datos class\_train, jazz\_train y kar\_train tanto para bajo como para melodía. La base de datos All contiene las tres bases de datos train.
+
+Results are shown in table \ref{table7}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | r | r }
+\hline
+Dataset & Bass Success (std dev) & Melody Success (std dev) \\
+\hline
+\hline
+class\_train & 95.57\% (0.95) & 87.11\% (1.54) \\
+jazz\_train & 99.42\% (0.37) & 93.84\% (1.22) \\
+kar\_train & 99.21\% (0.30) & 96.14\% (0.69) \\
+All & 98.36\% (0.30) & 92.31\% (0.60) \\
+\hline
+\end{tabular}
+\caption{Bass versus non-bass classification and melody versus non-melody classification.}
+\label{table7}
+\end{center}
+\end{table}
+
+
+
+
+\subsection{Bass Track Selection (Section 6.2)}
+
+Selección de la pista de bajo con $\theta=0.25$. $P(B|i) > |theta$.
+
+También se ha realizado la selección de la pista de melodía utilizando la nueva base de datos para compararlo con los resultados mostrados en el paper del ICPRAM \cite{vicente2012bass}, que son los obtenidos en la Tesis de Pierre \cite{de2011statistical}. Los resultados se muestran en la tabla \ref{table8}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Dataset & Acc. \% & Prec & Rec & F-m \\
+\hline
+\hline
+Bass   & class\_train.csv & 86.24\% & 0.87 & 0.98 & 0.92 \\
+track & jazz\_train.csv & 99.18\% & 0.99 & 1.00 & 1.00 \\
+selection & kar\_train.csv & 97.66\% & 0.98 & 1.00 & 0.99 \\
+\hline
+Melody   & class\_train.csv & 84.70\% & 0.85 & 0.99 & 0.92 \\
+track & jazz\_train.csv & 94.87\% & 0.95 & 0.99 & 0.97 \\
+selection & kar\_train.csv & 87.32\% & 0.94 & 0.92 & 0.93 \\
+\hline
+\end{tabular}
+\caption{Bass Track Selection.}
+\label{table8}
+\end{center}
+\end{table}
+
+
+
+
+
+\subsection{Bass Track Selection across Genres (Section 6.3)}
+
+Los conjuntos de entrenamiento jazz\_kar, class\_kar y class\_jazz se han construído utilizando las bases de datos de training jazz\_train, kar\_train y class\_train. El experimento se repite con  el umbral $\theta=0.25$.
+
+Se ha repetido la selección de la pista que contiene la melodía para compararlo con los resultados mostrados en el paper del ICPRAM \cite{vicente2012bass}, que son los obtenidos en la Tesis de Pierre \cite{de2011statistical}. Los resultados se muestran en la tabla \ref{table9}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Dataset & Acc. \% & Prec & Rec & F-m \\
+\hline
+\hline
+Bass & class\_train.csv & 86.24\% & 0.87 & 0.98 & 0.92 \\
+track & jazz\_train.csv & 99.18\% & 0.99 & 1.00 & 1.00 \\
+track & kar\_train.csv & 97.66\% & 0.98 & 1.00 & 0.99 \\
+\hline
+Melody & class\_train.csv & 84.70\% & 0.85 & 0.99 & 0.92 \\
+track & jazz\_train.csv & 94.87\% & 0.95 & 0.99 & 0.97 \\
+selection & kar\_train.csv & 87.32\% & 0.94 & 0.92 & 0.93 \\
+\hline
+\end{tabular}
+\caption{Bass Track Selection across Genres}
+\label{table9}
+\end{center}
+\end{table}
+
+
+
+
+
+
+\subsection{Interaction Between Melody and Bass Track Selection}\label{sec:multimodal}
+
+We have detected a problem to select the bass track using the melody information. The problem rises when a MIDI file has not bass track nor melody track. In this case if the probability of selecting the virtual track 0 for melody $P(t_0|M)=1$ implies that the probability of selecting t0 as bass is computed as $P(t_0|B)(1-P(t_0|M)=1)=0$. Therefore, if the melody track selected is $t_0$ (no melody track) then t0 can not be the bass track.
+
+To fix this issue $\hat{i_B}$ has been defined:
+
+\begin{equation}
+    \hat{i_B}=\arg\max_i\left\{\begin{matrix}
+    P(i|B), i=0
+    \\ 
+    P(i|B)(1-P(i|M))), i \neq 0
+    \end{matrix}\right.
+\end{equation}
+
+
+
+
+
+\subsubsection{Interaction Between Melody and Bass Track Selection (Section 6.4)}\label{sec:icepram64}
+
+In this experiment we have executed again experiments from ICPRAM 2012 (section 6.4) using the new dataset. Results are shown in tables \ref{table10} and \ref{table11}.
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\hline
+Bass track selection  & class\_train & 86.40\% & 0.87 & 0.98 & 0.92 \\
+using melody information & jazz\_train & 99.18\% & 0.99 & 1 & 1 \\
+ & kar\_train & 97.78\% & 0.98 & 1 & 0.99 \\
+\hline
+Bass track selection  & class\_train.csv & 86.24\% & 0.87 & 0.98 & 0.92 \\
+without melody & jazz\_train.csv & 99.18\% & 0.99 & 1 & 1 \\
+information & kar\_train.csv & 97.66\% & 0.98 & 1 & 0.99 \\
+\hline
+\end{tabular}
+\caption{Bass track selection using melody information.}
+\label{table10}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\hline
+Melody track selection  & class\_train & 84.70\% & 0.85 & 1 & 0.92 \\
+with bass information & jazz\_train & 94.87\% & 0.95 & 0.99 & 0.97 \\
+ & kar\_train & 87.32\% & 0.94 & 0.93 & 0.93 \\
+\hline
+Melody track selection  & class\_train.csv & 84.70\% & 0.85 & 0.99 & 0.92 \\
+without bass  & jazz\_train.csv & 94.87\% & 0.95 & 0.99 & 0.97 \\
+information & kar\_train.csv & 87.32\% & 0.94 & 0.92 & 0.93 \\
+\hline
+\end{tabular}
+\caption{Melody track selection using bass information.}
+\label{table11}
+\end{center}
+\end{table}
+
+
+
+\subsubsection{Interaction Between Melody and Bass Track Selection With 200 Dataset}
+
+This time we have repeated the experiment of bass track selection with the information obtained in melody track selection using the datasets used in paper \cite{vicente2012bass}. For this experiment we have used an schema leave-one-out as it was done in \cite{vicente2012bass} and the same values used in section 6.4. Results are shown in tables \ref{table13} and \ref{table14}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\hline
+Bass track selection  & clas200 & 99.50\% & 1 & 0.99 & 0.99 \\
+with melody information & jazz200 & 100.00\% & 1 & 1 & 1 \\
+ & kar200 & 93.50\% & 0.93 & 1 & 0.97 \\
+\hline
+Bass track selection  & clas200 & 99.50\% & 1 & 0.99 & 0.99 \\
+without melody information & jazz200 & 100.00\% & 1 & 1 & 1 \\
+ & kar200 & 93.50\% & 0.93 & 1 & 0.97 \\
+\hline
+\end{tabular}
+\caption{Bass track selection in 200 databases using melody information.}
+\label{table13}
+\end{center}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\hline
+Melody track selection  & clas200 & 99.50\% & 0.99 & 1 & 1 \\
+with bass information & jazz200 & 98.50\% & 0.99 & 0.99 & 0.99 \\
+ & kar200 & 77.00\% & 0.88 & 0.85 & 0.87 \\
+\hline
+Melody track selection  & clas200 & 99.50\% & 0.99 & 1 & 1 \\
+without bass information & jazz200 & 98.50\% & 0.99 & 0.99 & 0.99 \\
+ & kar200 & 77.50\% & 0.88 & 0.86 & 0.87 \\
+\hline
+\end{tabular}
+\caption{Melody track selection in 200 databases using bass information.}
+\label{table14}
+\end{center}
+\end{table}
+
+
+
+
+\subsubsection{Interaction Between Melody and Bass Track Selection Using Train and Test Datasets}
+
+In this experiment we have selected the bass track with the information obtained in melody track selection but using the dataset class\_train, jazz\_train and ka\_train for training the algorithm and class\_test, jazz\_test and kar\_test for testing.
+
+Results are shown in tables \ref{table15} and \ref{table16}.
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | r | r | r | r | r | r }
+\hline
+ & Train Set & Test Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\hline
+Bass track selection  & class\_train & class\_test & 87.24\% & 0.88 & 0.99 & 0.93 \\
+with melody information & jazz\_train & jazz\_test & 98.61\% & 0.99 & 1 & 0.99 \\
+ & kar\_train & kar\_test & 98.21\% & 0.98 & 1 & 0.99 \\
+\hline
+Bass track selection  & class\_train & class\_test & 87.24\% & 0.87 & 0.99 & 0.93 \\
+without melody information & jazz\_train & jazz\_test & 98.61\% & 0.99 & 1 & 0.99 \\
+ & kar\_train & kar\_test & 97.99\% & 0.98 & 1 & 0.99 \\
+\hline
+\end{tabular}
+\caption{Bass track selection with melody information using train and test datasets.}
+\label{table15}
+\end{center}
+\end{table}
+
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | l | l | r | r | r | r }
+\hline
+ & Train Set & Test Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\hline
+Melody track selection  & class\_train & class\_test & 88.72\% & 0.89 & 1 & 0.94 \\
+with bass information & jazz\_train & jazz\_test & 88.86\% & 0.9 & 0.98 & 0.94 \\
+ & kar\_train & kar\_test & 87.05\% & 0.93 & 0.93 & 0.93 \\
+\hline
+Melody track selection  & class\_train & class\_test & 88.13\% & 0.88 & 1 & 0.94 \\
+without bass information & jazz\_train & jazz\_test & 88.86\% & 0.9 & 0.98 & 0.94 \\
+ & kar\_train & kar\_test & 87.28\% & 0.93 & 0.93 & 0.93 \\
+\hline
+\end{tabular}
+\caption{Melody track selection with bass information using train and test datasets.}
+\label{table16}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+
+\subsubsection{Conclusions}
+
+In section \ref{sec:icepram64} we expected an improvement in bass track selection using melody information a priory (and melody track selection using bass information). However results in are not better, and in some cases worse, using information a priory.
+
+Higher differences have been detected  in class\_train database, therefore we have analyzed the differences in bass and melody track selection for this database.
+
+Table \ref{table17}shows all MIDI files from class\_train database were bass track was properly classified without the melody information but failed using melody information a priory.
+
+\begin{table}
+\tiny
+\begin{center}
+\begin{tabular}{  l | r | r | r | r | r | r }
+\hline
+Midi file & track & $p(M|t)$ & $p(B|t)$ & $p(A|t)$ & tag & $p(i|B)(1-p(i|M))$ \\
+\hline
+\hline
+Renaissance\_Renaissance-Late\_ & 0 &  &  &  &  & 0.38 \\
+Victoria\_Quam\_Pulchri\_Sunt- & 1 & 0.5 & 0.0 & 0.7 & melody & 0.0 \\
+ 2-Gloria-c.mid  & 2 & 0.0 & 0.0 & 0.9 & melody & 0.0 \\
+ & 3 & 0.0 & 0.0 & 0.8 & accomp & 0.0 \\
+ & 4 & 0.6 & 0.4 & 0.0 & bass & 0.34 \\
+ \hline
+Medieval\_ArsNova\_ & 0 &  &  &  &  & 0.15 \\
+Machau\_machaut-b17.mid & 2 & 1.0 & 0.0 & 0.0 & melody & 0.0 \\
+ & 3 & 0.1 & 0.7 & 0.4 & accomp & 0.39 \\
+ & 4 & 0.15 & 0.7 & 0.3 & bass & 0.38 \\
+ \hline
+Renaissance\_Renaissance-Late\_ & 0 &  &  &  &  & 0.45 \\
+Victoria\_Quicumque\_ & 1 & 0.0 & 0.0 & 1.0 & melody & 0.0 \\
+Christum\_Quaeritis-s.mid & 2 & 0.15 & 0.0 & 0.7 & accomp & 0.0 \\
+ & 3 & 0.0 & 0.0 & 1.0 & accomp & 0.0 \\
+ & 4 & 0.7 & 0.3 & 0.0 & bass & 0.19 \\
+\hline
+\end{tabular}
+\caption{Probabilities for MIDI files were bass track was select wrongly using melody information.}
+\label{table17}
+\end{center}
+\end{table}
+
+
+
+In the three cases the bass track has the higher probability of bass, but they also have an high probability of melody. Then the probability P(i|B)(1-P(i|M)) is penalized. If the number of bass tracks with an high value of melody probability P(M|i) is high the bass-track selection using the described method in this section will not improve the results.
+
+Table \ref{table18} shown an histogram with the probability $P(M|i)$ of bass tracks, and $P(B|i)$ of melody tracks in class\_train database.
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | r  r  l | r }
+\cline{1-2}\cline{4-5}
+$P(M|t)$ & Num. of bass tracks &  & $P(B|t)$ & Num. of melody tracks \\
+\cline{1-2}\cline{4-5}
+\cline{1-2}\cline{4-5}
+0.0 & 515 &  & 0.0 & 1014 \\
+0.1 & 102 &  & 0.1 & 19 \\
+0.2 & 32 &  & 0.2 & 5 \\
+0.3 & 13 &  & 0.3 & 2 \\
+0.4 & 5 &  & 0.4 & 3 \\
+0.5 & 3 &  & 0.5 & 0 \\
+0.6 & 1 &  & 0.6 & 3 \\
+0.7 & 3 &  & 0.7 & 1 \\
+0.8 & 2 &  & 0.8 & 4 \\
+0.9 & 0 &  & 0.9 & 7 \\
+1.0 & 1 &  & 1.0 & 11 \\
+\cline{1-2}\cline{4-5}
+\end{tabular}
+\caption{Probabilities histograms for bass and melody tracks.}
+\label{table18}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+\subsection{Interaction Between Melody, Bass and Accompaniment Track Selection}
+
+All tracks in database are tagged as bass, melody and accompaniment. How can we improve the bass and melody tracks detection using the information of accompaniments tracks?
+
+For this purpose we have proposed two methods. The first one consists in use the probability $p(A|t)$ of accompaniment tracks in the same way that we did in the section 2.5.
+
+In the second method a new classifier will be implemented using the probabilities $p(B|t)$, $p(M|t)$ and $p(A|t)$ of each track as attributes to train the classifier.
+
+
+\subsubsection{Bass Track Selection Using Information A Priori of Melody and Accompaniment}
+
+In section \ref{sec:multimodal} the bass track selected for a midi file is:
+
+\begin{equation}
+\hat{i_B}  = \arg \max_i \{p(i|M, \hat{i_B}\neq i)\}    
+\end{equation}
+
+Adding the accompaniment information to the probabilities of bass tracks using melody information we obtain:
+\begin{equation}
+    \begin{matrix}
+    p(i|B, \hat{i_M}\neq i) = p(i|B)(1-p(i|M)) \\
+    p(i|B, \hat{i_M}\neq i, \hat{i_A}\neq i) = p(i|B, \hat{i_M}\neq i)(1-p(i|A)) \\
+    p(i|M, \hat{i_M}\neq i, \hat{i_A}\neq i) = p(i|B)(1-p(i|M))(1-p(i|A)) \\
+    \end{matrix}
+\end{equation}
+
+The track for bass line selected is:
+\begin{equation}
+\hat{i_B}  = \arg \max_i \{p(i|B)(1-p(i|M))(1-p(i|A)) \}    
+\end{equation}
+
+And of course it could be used to for the melody track selection:
+\begin{equation}
+\hat{i_M}  = \arg \max_i \{p(i|M)(1-p(i|B))(1-p(i|A)) \}    
+\end{equation}
+
+The experiments have been performed on class-train, jazz-train and kar-train databases using the leave-one-out schema. RF algorithm has been used to obtain the probabilities. Results are shown in the  tables \ref{table19} and \ref{table20}:
+
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\multirow{3}{3.5cm}{Bass track selection using melody and accomp information} & class\_train & 87.48\% & 0.89 & 0.97 & 0.93 \\
+ & jazz\_train & 99.42\% & 0.99 & 1.00 & 1.00 \\
+ & kar\_train & 97.89\% & 0.99 & 0.99 & 0.99 \\
+\hline
+\multirow{3}{3.5cm}{Bass track selection without melody and accomp} & class\_train & 86.24\% & 0.87 & 0.98 & 0.92 \\
+ & jazz\_train & 99.18\% & 0.99 & 1.00 & 1.00 \\
+ & kar\_train & 97.66\% & 0.98 & 1.00 & 0.99 \\
+\hline
+\end{tabular}
+\caption{Bass track selection using melody and accompaniment information.}
+\label{table19}
+\end{center}
+\end{table}
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\multirow{3}{3.5cm}{Melody track selection with bass and accomp information} & class\_train & 85.63\% & 0.86 & 0.99 & 0.92 \\
+& jazz\_train & 93.94\% & 0.96 & 0.98 & 0.97 \\
+& kar\_train & 86.87\% & 0.95 & 0.91 & 0.93 \\
+\hline
+\multirow{3}{3.5cm}{Melody track selection without bass and accomp information} & class\_train & 84.70\% & 0.85 & 0.99 & 0.92 \\
+ & jazz\_train & 94.87\% & 0.95 & 0.99 & 0.97 \\
+ & kar\_train & 87.32\% & 0.94 & 0.92 & 0.93 \\
+\hline
+\end{tabular}
+\caption{Melody track selection using bass and accompaniment information}
+\label{table20}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+\subsubsection{A Second Classifier Trained using  Bass, Melody and Accompaniment Probabilities}
+
+In the previous experiments we have obtained the probabilities $p(B|t)$, $p(M|t)$ and $p(A|t)$ for each track in databases.
+
+In the scope of bass track selection exists the possibility that none of the track of a MIDI file contains the bass line. In this way a virtual zero track has been added with $p(B|t)=\theta$ and probabilities $p(i|B)$ has been computed. This procedure has also been used for $p(i|M)$ and $p(i|A)$. For threshold $\theta$ has been used the value 0.25.
+
+Table \ref{table21} shows an example of these features for a midi file
+
+\begin{table}
+\begin{center}
+\begin{tabular}{  l | r  r  r }
+\hline
+ Track & $p(i|M)$ & $p(i|B)$ & $p(i|A)$ \\
+\hline
+\hline
+0 & 0.00 & 0.23 & 0.00 \\
+1 & 0.48 & 0.00 & 0.06 \\
+2 & 0.29 & 0.00 & 0.21 \\
+3 & 0.07 & 0.00 & 0.59 \\
+4 & 0.03 & 0.77 & 0.00 \\
+\hline
+\end{tabular}
+\caption{Example of the $p(i|B)$, $p(i|M)$ and $p(i|A)$ for a MIDI file.}
+\label{table21}
+\end{center}
+\end{table}
+
+
+Probabilities $p(i|B)$, $p(i|M)$ and $p(i|A)$ of each track in class\_train, jazz\_train and kar\_train databases have been used as features to create the arff files used to train the classifiers.
+
+In the first experiment RF, SMO and NaiveBayes algorithms have been tested in the context of bass versus non\_bass and melody versus non\_melody classification. 
+
+Results are shown in  tables \ref{table22} and \ref{table23}.
+
+\begin{table}
+\small
+\begin{center}
+\begin{verbatim}
+Dataset           (1) trees.RandomFo | (2) functions.S (3) bayes.Naive 
+---------------------------------------------------------------------- 
+bass_class       (100)   93.80(0.90) |   93.43(0.89)     92.78(1.13) * 
+bass_jazz        (100)   99.25(0.38) |   99.37(0.35)     99.45(0.31) v 
+bass_kar         (100)   99.09(0.30) |   99.12(0.27)     98.45(0.42) * 
+bass_all         (100)   97.84(0.34) |   97.85(0.32)     97.24(0.33) * 
+---------------------------------------------------------------------- 
+                             (v/ /*) |         (0/4/0)         (1/0/3) 
+\end{verbatim}
+\caption{Bass versus non\_bass classification using $p(i|B)$, $p(i|M)$ and $p(i|A)$.}
+\label{table22}
+\end{center}
+\end{table}
+
+\begin{table}
+\small
+\begin{center}
+\begin{verbatim}
+Dataset           (1) trees.RandomFo | (2) functions.S (3) bayes.Naive
+----------------------------------------------------------------------
+melody_class     (100)   86.15(1.38) |   85.80(1.13)     86.46(1.38)  
+melody_jazz      (100)   93.41(1.03) |   90.99(1.08) *   72.27(1.85) *
+melody_kar       (100)   97.06(0.56) |   96.32(0.55) *   91.05(1.13) *
+melody_all       (100)   92.84(0.60) |   91.89(0.48) *   87.41(0.93) *
+----------------------------------------------------------------------
+                             (v/ /*) |         (0/1/3)         (0/1/3)
+
+\end{verbatim}
+\caption{Melody versus non\_melody classification using $p(i|B)$, $p(i|M)$ and $p(i|A)$.}
+\label{table23}
+\end{center}
+\end{table}
+
+
+In the second experiment the SMO algorithm has been used to select the bass and melody tracks for each MIDI file. We have used the databases class-train, jazz-train and kar-train, and for each database an SMO classifier has been implemented using a leave-one-out schema. Using Weka application the parameters a, b, c and d of the following function are obtained:
+
+\begin{equation}
+SMO(i) = a*p(i|M) + b*p(i|B) + c*p(i|A) + d    
+\end{equation}
+
+And the bass track selected is
+
+\begin{equation}
+\hat{i_B}=\arg\min_i\left\{ SMO(i) \right\}
+\end{equation}
+
+
+
+Results for bass track selection using a second SMO classifier are shown table \ref{table24}. Experiments have been repetated for melody track selection and results are shown in table \ref{table25}.
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\hline
+\multirow{3}{3cm}{Bass track selection using SMO algorithm} & class\_train & 87.33\% & 0.88 & 0.98 & 0.93 \\
+ & jazz\_train & 99.30\% & 0.99 & 1.00 & 1.00 \\
+ & kar\_train & 97.78\% & 0.98 & 1.00 & 0.99 \\
+\hline
+\multirow{3}{3cm}{Bass track selection without melody and accomp} & class\_train.csv & 86.24\% & 0.87 & 0.98 & 0.92 \\
+ & jazz\_train.csv & 99.18\% & 0.99 & 1.00 & 1.00 \\
+ & kar\_train.csv & 97.66\% & 0.98 & 1.00 & 0.99 \\
+\hline
+\end{tabular}
+\caption{Bass track selection using SMO second classifier.}
+\label{table24}
+\end{center}
+\end{table}
+
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r }
+\hline
+ & Set & Acc\% & Prec. & Recall & F-m \\
+\hline
+\hline
+\multirow{3}{3cm}{Melody track selection using SMO algorithm} & class\_train & 84.70\% & 0.85 & 1.00 & 0.92 \\
+ & jazz\_train & 94.76\% & 0.95 & 1.00 & 0.97 \\
+ & kar\_train & 90.10\% & 0.90 & 1.00 & 0.95 \\
+\hline
+\multirow{3}{3cm}{Melody track selection without bass and accomp information} & class\_train.csv & 84.70\% & 0.85 & 0.99 & 0.92 \\
+ & jazz\_train.csv & 94.87\% & 0.95 & 0.99 & 0.97 \\
+ & kar\_train.csv & 87.32\% & 0.94 & 0.92 & 0.93 \\
+\hline
+\end{tabular}
+\caption{Melody track selection using SMO second classifier.}
+\label{table25}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+%==============================================================================
+%==============================================================================
+
+
+
+
+\section{Bass Track Selection Considering its Imbalanced Context (preliminary experiments)}
+
+Bass and melody track identification can be considered as a problem in imbalances scenarios where the bass or melody track can be considered as the minority class \cite{martin2009melodic}. As shown in table 2.1 the number of bass tracks is much lower that the number of non-bass tracks.
+
+Table \ref{table2} shows the number of bass and melody tracks in class, jazz and kar datasets. 
+
+The aim of this work is to compare how the bass track selection can be improved in balanced scenarios.
+
+
+
+
+\subsection{Over-sampling and sub-sampling filters in Weka}
+
+For experiments Resample and SMOTE filters of Weka have been used for over-sampling and SpreadSubsample has been used for sub-samping in the next way:
+
+Resample -B 1.0 -S 1 -Z <percentage> \\
+SMOTE -C 0 -K 5 -P <percentage> -S 1 \\
+SpreadSubsample  -M 1.0  -X 0.0 -S 1 \\
+
+
+
+
+
+\subsection{Bass versus Non-bass Classification Using Balanced Datasets}
+
+For this experiments we have used the datasets class, jazz and kar. Experiment has been performed with Experimenter tool of Weka. 
+
+Experimenter has been configured with option “Train/Test Percentage Split (data randomized)” were 66.0\% of instances for each dataset has been used for training and has been executed 10 iteration for each dataset classification and each filter.
+
+Table \ref{table26} shows the percentage parameter used in Resample and SMOTE filters for each dataset and track type.
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | l | r | r }
+\hline
+Type of track & Dataset & Resample & SMOTE \\
+\hline
+\hline
+Bass & class & 166.26 & 392.76 \\
+ & jazz & 159.98 & 299.77 \\
+ & kar & 175.5 & 622.50 \\
+\hline
+Melody & class & 145.64 & 167.94 \\
+ & jazz & 145.96 & 170.09 \\
+ & kar & 174.84 & 594.90 \\
+\hline
+Accomp & class & 111.90 & 27.02 \\
+ & jazz & 105.94 & 12.63 \\
+ & kar & 150.52 & 204.23 \\
+\hline
+\hline
+Bass & class\_train & 166.04 & 388.92 \\
+ & jazz\_train & 157.55 & 271.11 \\
+ & kar\_train & 175.78 & 625.86 \\
+\hline
+Melody & class\_train & 146.38 & 172.97 \\
+ & jazz\_train & 145.62 & 167.75 \\
+ & kar\_train & 175.08 & 602.51 \\
+\hline
+Accomp & class\_train & 112.42 & 28.35 \\
+ & jazz\_train & 103.16 & 6.53 \\
+ & kar\_train & 150.86 & 207.01 \\
+\hline
+\end{tabular}
+\caption{Percentage parameter used in Resample and SMOTE filters.}
+\label{table26}
+\end{center}
+\end{table}
+
+
+
+Results of bass, melody and accompaniment classifications are shown in table \ref{table27}.
+
+\begin{table}
+\scriptsize
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r | r | r }
+\hline
+ %&  & \multicolumn{2}{|c|}{Bass} &  \multicolumn{2}{|c|}{Melody} &  \multicolumn{2}{|c|}{Accomp} &  \\
+ &  & \multicolumn{2}{|c|}{Bass} &  \multicolumn{2}{|c|}{Melody} & \multicolumn{2}{|c|}{Accomp}  \\
+\hline
+Dataset & Filter & Acc (std dev) & TPrate & Acc (std dev) & TPrate & Acc (std dev) & TPrate \\
+\hline
+\hline
+class & No filter & 95.68\% (0.36) & 0.88 & 87.38\% (0.54 & 0.75 & 84.59\% (0.67) & 0.90 \\
+ & Resample & 95.41\% (0.56) & 0.92 & 85.57\% (0.65) & 0.80 & 84.31\% (0.73) & 0.89 \\
+ & SMOTE & 94.88\% (0.45) & 0.92 & 85.31\% (0.62) & 0.80 & 84.61\% (0.69) & 0.89 \\
+ & SSS^* & 93.52\% (0.71) & 0.96 & 82.27\% (0.64) & 0.84 & 84.42\% (0.39) & 0.88 \\
+\hline
+jazz & No filter & 99.44\% (0.10) & 0.99 & 92.86\% (0.46) & 0.87 & 92.27\% (0.46) & 0.95 \\
+ & Resample & 99.30\% (0.12) & 0.99 & 92.09\% (0.71) & 0.92 & 91.88\% (0.49) & 0.94 \\
+ & SMOTE & 99.31\% (0.09) & 0.99 & 92.41\% (0.67) & 0.92 & 92.74\% (0.55) & 0.94 \\
+ & SSS^* & 99.14\% (0.25) & 0.99 & 90.13\% (0.53) & 0.94 & 92.45\% (0.59) & 0.94 \\
+\hline
+kar & No filter & 99.35\% (0.15) & 0.98 & 96.16\% (0.14) & 0.82 & 95.28\% (0.25) & 0.98 \\
+ & Resample & 99.20\% (0.16) & 0.98 & 95.67\% (0.32) & 0.88 & 95.21\% (0.21) & 0.97 \\
+ & SMOTE & 99.15\% (0.18) & 0.98 & 94.97\% (0.30) & 0.90 & 95.25\% (0.18) & 0.97 \\
+ & SSS^* & 98.12\% (0.47) & 0.99 & 91.50\% (0.37) & 0.94 & 94.30\% (0.40) & 0.95 \\
+\hline
+\end{tabular}
+\caption{Bass, melody and accompaniment classifications. SSS*: SpreadSubSample filter.}
+\label{table27}
+\end{center}
+\end{table}
+
+
+
+Bass and melody success in classification is not improved using filters to balance the number of instances. However the rate of true-positives bass and melody tracks classification has been improved. This is due to the increase of the number of false-positives.
+
+The more significative change is in class database. Success and TP rate are shown in following charts.
+
+
+
+\subsection{Bass track selection}
+
+In this experiment we have used training datasets for train classifier and test dataset to verify the results. For each filter it has been created an arff training training file for each training dataset using the parameters from table 3.1 for train datasets.
+
+Results for bass track selection are shown in table \ref{29}.
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r | r }
+\hline
+Train dataset & Test dataset & Filter & Acc.\% & Precision & Recall & F-measure \\
+\hline
+\hline
+class\_train & class\_test & No filter & 87.83\% & 0.88 & 0.99 & 0.93 \\
+ &  & Resample & 87.24\% & 0.87 & 1.00 & 0.93 \\
+ &  & SMOTE & 88.72\% & 0.88 & 1.00 & 0.94 \\
+ &  & SSS & 84.87\% & 0.84 & 1.00 & 0.92 \\
+\hline
+jazz\_train & jazz\_test & No filter & 98.61\% & 0.99 & 1.00 & 0.99 \\
+ &  & Resample & 97.91\% & 0.98 & 1.00 & 0.99 \\
+ &  & SMOTE & 98.61\% & 0.99 & 1.00 & 0.99 \\
+ &  & SSS & 98.14\% & 0.98 & 1.00 & 0.99 \\
+\hline
+kar\_train & kar\_test & No filter & 97.99\% & 0.98 & 1.00 & 0.99 \\
+ &  & Resample & 98.21\% & 0.98 & 1.00 & 0.99 \\
+ &  & SMOTE & 97.77\% & 0.98 & 1.00 & 0.99 \\
+ &  & SSS & 96.21\% & 0.96 & 1.00 & 0.98 \\
+\hline
+\end{tabular}
+\caption{Bass track selection using filters to solve the problem of Unbalanced Contexts.}
+\label{table29}
+\end{center}
+\end{table}
+
+
+The same experiment has been repeated in the context of melody track selection and results are shown in table \ref{table30}
+
+\begin{table}
+\small
+\begin{center}
+\begin{tabular}{  l | l | r | r | r | r | r }
+\hline
+ &  &  &  &  &  &  \\
+\hline
+Train dataset & Test dataset & Train Filename & Acc.\% & Precision & Recall & F-measure \\
+\hline
+\hline
+class\_train & class\_test & No filter & 88.72\% & 0.89 & 1.00 & 0.94 \\
+ &  & Resample & 87.54\% & 0.88 & 1.00 & 0.93 \\
+ &  & SMOTE & 85.76\% & 0.86 & 1.00 & 0.92 \\
+ &  & SSS & 85.16\% & 0.85 & 1.00 & 0.92 \\
+\hline
+jazz\_train & jazz\_test & No filter & 88.86\% & 0.90 & 0.98 & 0.94 \\
+ &  & Resample & 86.54\% & 0.87 & 0.99 & 0.93 \\
+ &  & SMOTE & 87.24\% & 0.88 & 0.98 & 0.93 \\
+ &  & SSS & 87.01\% & 0.88 & 0.99 & 0.93 \\
+\hline
+kar\_train & kar\_test & No filter & 87.28\% & 0.93 & 0.93 & 0.93 \\
+ &  & Resample & 90.62\% & 0.93 & 0.97 & 0.95 \\
+ &  & SMOTE & 90.18\% & 0.92 & 0.98 & 0.95 \\
+ &  & SSS & 89.06\% & 0.89 & 1.00 & 0.94 \\
+\hline
+\end{tabular}
+\caption{Melody track selection using filters to solve the problem of Unbalanced Contexts.}
+\label{table30}
+\end{center}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\bibliographystyle{plain}
+\bibliography{test}
+
+\end{document}
+
