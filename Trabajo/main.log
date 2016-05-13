@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.12)  12 MAY 2016 09:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.5.12)  13 MAY 2016 08:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -461,91 +461,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 868--871
  []
 
 [12]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.941  & SSS^
-             * & 93.52\% (0.71) & 0.96 & 82.27\% (0.64) & 0.84 & 84.42\% (0....
-
-? 
-! Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.941  & SSS^* &
-                 93.52\% (0.71) & 0.96 & 82.27\% (0.64) & 0.84 & 84.42\% (0....
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.941  & SSS^* &
-                 93.52\% (0.71) & 0.96 & 82.27\% (0.64) & 0.84 & 84.42\% (0....
-
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.941  & SSS^* &
-                 93.52\% (0.71) & 0.96 & 82.27\% (0.64) & 0.84 & 84.42\% (0....
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.946  & SSS^
-             * & 99.14\% (0.25) & 0.99 & 90.13\% (0.53) & 0.94 & 92.45\% (0....
-
-? 
-! Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.946  & SSS^* &
-                 99.14\% (0.25) & 0.99 & 90.13\% (0.53) & 0.94 & 92.45\% (0....
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.946  & SSS^* &
-                 99.14\% (0.25) & 0.99 & 90.13\% (0.53) & 0.94 & 92.45\% (0....
-
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.946  & SSS^* &
-                 99.14\% (0.25) & 0.99 & 90.13\% (0.53) & 0.94 & 92.45\% (0....
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.951  & SSS^
-             * & 98.12\% (0.47) & 0.99 & 91.50\% (0.37) & 0.94 & 94.30\% (0....
-
-? 
-! Extra }, or forgotten $.
-<template> \unskip \hfil }
-                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.951  & SSS^* &
-                 98.12\% (0.47) & 0.99 & 91.50\% (0.37) & 0.94 & 94.30\% (0....
-
-? 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.951  & SSS^* &
-                 98.12\% (0.47) & 0.99 & 91.50\% (0.37) & 0.94 & 94.30\% (0....
-
-? 
-! Missing } inserted.
-<inserted text> 
-                }
-l.951  & SSS^* &
-                 98.12\% (0.47) & 0.99 & 91.50\% (0.37) & 0.94 & 94.30\% (0....
-
-? 
-
 Overfull \hbox (29.74724pt too wide) in paragraph at lines 930--954
  [] 
  []
@@ -596,7 +511,7 @@ mf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2015basic/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2015bas
 ic/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/201
 5basic/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (15 pages, 261626 bytes).
+Output written on main.pdf (15 pages, 261895 bytes).
 PDF statistics:
  125 PDF objects out of 1000 (max. 8388607)
  89 compressed objects within 1 object stream
